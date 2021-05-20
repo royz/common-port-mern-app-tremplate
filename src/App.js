@@ -5,12 +5,12 @@ import About from "./components/About";
 import axios from "axios";
 
 // in dev env, set the default base url for axios
-if (process.env.REACT_APP_ENV === 'dev'){
+if (process.env.REACT_APP_ENV === 'dev') {
   axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL
 }
 
 function App() {
-  axios.get('/hello').then(console.log).catch(console.log)
+  axios.get('/api/test').then(res => console.log(res.data)).catch(console.log)
 
   return (
     <div className="App">

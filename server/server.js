@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
 const reactBuildDir = path.join(__dirname, "..", "build");
@@ -7,6 +8,9 @@ const reactBuildDir = path.join(__dirname, "..", "build");
 // middlewares
 app.use(express.static(reactBuildDir));
 app.use(express.static('public'));
+if (process.env.ENV === 'dev') app.use(cors());
+
+console.log({env: process.env.ENV})
 
 // add the routes
 app.use('/api', require('./routes/index.route'))
